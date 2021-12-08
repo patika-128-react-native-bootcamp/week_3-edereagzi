@@ -8,14 +8,6 @@ export default function MenuDetail() {
   const route = useRoute();
   const {fd} = route.params;
 
-  const renderIngredients = item => {
-    return (
-      <View style={styles.badge_container}>
-        <Text style={styles.badge_label}>{item}</Text>
-      </View>
-    );
-  };
-
   return (
     <SafeAreaView>
       <View style={styles.container}>
@@ -24,7 +16,13 @@ export default function MenuDetail() {
         <Text style={styles.label}>Price: {fd.price}</Text>
         <Text style={styles.label}>Ingredients:</Text>
         <View style={styles.ingredients}>
-          {fd.ingredients.split(',').map(renderIngredients)}
+          {fd.ingredients.split(',').map((item, id) => {
+            return (
+              <View key={id} style={styles.badge_container}>
+                <Text style={styles.badge_label}>{item}</Text>
+              </View>
+            );
+          })}
         </View>
       </View>
     </SafeAreaView>
