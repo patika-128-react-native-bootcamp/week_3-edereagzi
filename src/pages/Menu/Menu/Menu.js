@@ -22,7 +22,11 @@ export default function Menu() {
     <View style={styles.container}>
       <SafeAreaView style={styles.container}>
         <View>
-          <FlatList data={mockData.menu} renderItem={renderMenu} />
+          <FlatList
+            data={mockData.menu}
+            renderItem={renderMenu}
+            keyExtractor={mockData.menu.id}
+          />
         </View>
       </SafeAreaView>
     </View>
